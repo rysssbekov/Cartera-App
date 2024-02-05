@@ -4,6 +4,7 @@ import SignInScreen from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import SignUpCode from "../screens/SignUpScreen/SignUpCode";
 import SignUpPassword from "../screens/SignUpScreen/SignUpPassword";
+import ParentScreen from "../screens/ParentScreen/ParentScreen"
 import NewsScreen from "../screens/News/index"
 import HomeScreen from "../screens/HomeScreen";
 import NewsDetailsScreen from "../screens/NewsDetails/NewsDetailsScreen";
@@ -34,6 +35,7 @@ const StackNavigator = () => {
                 options={{animation: "slide_from_bottom"}}
             />
             <Stack.Screen name={"Search"} component={SearchScreen}/>
+            <Stack.Screen name={"Parent"} component={ParentScreen} />
         </Stack.Navigator>
     )
 }
