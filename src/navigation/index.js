@@ -14,6 +14,7 @@ import Feed from "../screens/Profile";
 import { useColorScheme } from "react-native";
 // import Ionicons from '@expo/vector-icons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import UnixScreen from "../screens/Unix/Unix";
 
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ const StackNavigator = () => {
             <Stack.Screen name={"SignUpPassword"} component={SignUpPassword} />    
             <Stack.Screen name={"Home"} component={TabNavigator} />
             <Stack.Screen name={"News"} component={NewsScreen} />
+            <Stack.Screen name={"Unix"} component={UnixScreen} />
             <Stack.Screen name={"NewsDetails"} component={NewsDetailsScreen}
                 options={{animation: "slide_from_bottom"}}
             />

@@ -5,15 +5,18 @@ import CircleMenu from "./CircleMenu";
 import CustomButton from "../../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
+import { useGlobalUserState } from "../../stores/user";
 
 
 const Home = () => {
+    const userState = useGlobalUserState()
+    const user = userState.get()
+    const userObj = user.user
 
     var width = Dimensions.get('window').width;
     var height = Dimensions.get('window').width;
 
     const navigation = useNavigation();
-
     const onNewsPressed = () => {
         navigation.navigate("News");
     };
@@ -28,8 +31,8 @@ const Home = () => {
                     <View style={styles.profileUpper}> 
                         <Image style={styles.avatar} source={require("./../../../assets/ava.png")}/>
                         <View>
-                            <Text style={styles.name}>Батыр</Text>
-                            <Text style={styles.name}>Султан</Text>
+                            <Text style={styles.name}>{userObj.firstname}</Text>
+                            <Text style={styles.name}>{userObj.lastname}</Text>
                         </View>
                     </View>
                     <View style={styles.profileDetails}>
@@ -50,7 +53,9 @@ const Home = () => {
         
                 <View style={[styles.menu, {width: width, marginTop: height * 0.1}]}>
                     <View style={[styles.upper, {width: width}]}>
-                        <Image style={styles.menuLargeDimension} source={require('./../../../assets/unix.png')} />
+                        <TouchableOpacity onPress={() => navigation.navigate("Unix")}>
+                            <Image style={styles.menuLargeDimension} source={require('./../../../assets/unix.png')} />
+                        </TouchableOpacity>
                         
                             <Image style={styles.menuDimension} source={require('./../../../assets/map.png')}/>
                         

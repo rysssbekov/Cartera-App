@@ -1,18 +1,25 @@
 import { View, Text, ScrollView, ImageBackground } from "react-native";
 import CustomInput from "../../components/CustomInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { COLORS, SIZES } from "../../../constants";
 import CustomButton from "../../components/CustomButton";
 import styles from "../SignUpScreen/signupscreen.style";
 import { useNavigation } from "@react-navigation/native";
+import { signIn } from "../../actions/user";
+import { useGlobalUserState } from "../../stores/user";
 
 const SignInScreen = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const userState = useGlobalUserState()
+  const user = userState.get()
 
   const navigation = useNavigation();
-  const onSignInPressed = () => {
-    navigation.navigate("Home");
+  const onSignInPressed = async () => {
+    const response = await signIn(login, password)
+    if(response.success) {
+      navigation.navigate("Home")
+    }
   };
 
   const onSignUpPressed = () => {
@@ -22,6 +29,12 @@ const SignInScreen = () => {
   const onForgotPasswordPressed = () => {
     console.warn("Forgot Password");
   };
+
+  useEffect(() => {
+    if(user.token) {
+      navigation.navigate("Home")
+    }
+  }, [])
 
   return (
     <ScrollView style={{flex:1, backgroundColor: COLORS.white}}>
