@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { BookmarkIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { CARTERA_API_HOST } from "../api";
 
 export default function NewsSection({ newsProps }) {
   const navigation = useNavigation();
@@ -111,8 +112,7 @@ export default function NewsSection({ newsProps }) {
             <Image
               source={{
                 uri:
-                  item.urlToImage ||
-                  "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                  `${CARTERA_API_HOST}/uploads/${item.preview_image}`
               }}
               style={{ width: hp(9), height: hp(10) }}
               resizeMode="cover"
@@ -123,14 +123,6 @@ export default function NewsSection({ newsProps }) {
           {/* Content */}
 
           <View className="w-[70%] pl-4 justify-center space-y-1">
-            {/* Author */}
-            {/* <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
-              {item?.author?.length > 20
-                ? item.author.slice(0, 20) + "..."
-                : item.author}
-            </Text> */}
-
-            {/* Title */}
             <Text
               className="text-[#424242] uppercase max-w-[90%] font-semibold"
               style={{
@@ -142,9 +134,8 @@ export default function NewsSection({ newsProps }) {
                 : item.title}
             </Text>
 
-            {/* Date */}
             <Text className="text-xs text-[#424242]">
-              {formatDate(item.publishedAt)}
+              {formatDate(item.createdAt)}
             </Text>
           </View>
 

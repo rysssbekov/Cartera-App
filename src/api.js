@@ -2,6 +2,7 @@ import axios from 'axios'
 import { accessGlobalUserState } from './stores/user'
 
 export const UNIX_API_HOST = 'https://uni-x-api.kz'
+export const CARTERA_API_HOST = 'https://csci3170.gdh.kz'
 
 const makeRequest = async (method, url, apiHost, params, headers = {}) => {
     const apiUrl = `${apiHost}`
@@ -44,6 +45,8 @@ const request =
 
 const unixRequest = (method, url) => request(method, url, UNIX_API_HOST)
 
+const carteraRequest = (method, url) => request(method, url, CARTERA_API_HOST)
+
 const userApi = {
     signIn: (body) => unixRequest('post', '/auth/login')(body),
     search: (query) => unixRequest('get', `/users/search?name=${query}`)(),
@@ -51,6 +54,12 @@ const userApi = {
     forgetPassword: (body) => unixRequest('post', '/auth/forget')(body)
 }
 
+const articlesApi = {
+    all: () => carteraRequest('get', '/api/v1/articles/all')(),
+    allEvents: () => carteraRequest('get', '/api/v1/cevents/all')()
+}
+
 export {
-    userApi
+    userApi,
+    articlesApi
 }

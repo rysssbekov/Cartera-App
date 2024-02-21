@@ -56,16 +56,20 @@ const Home = () => {
                         <TouchableOpacity onPress={() => navigation.navigate("Unix")}>
                             <Image style={styles.menuLargeDimension} source={require('./../../../assets/unix.png')} />
                         </TouchableOpacity>
-                        
+                        <TouchableOpacity onPress={() => navigation.navigate("Map")}>
                             <Image style={styles.menuDimension} source={require('./../../../assets/map.png')}/>
-                        
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.lower, {width: width}]}>
-                        <TouchableOpacity onPress={onNewsPressed}>
+                        <TouchableOpacity onPress={() => onNewsPressed('news')}>
                             <Image style={styles.menuDimension} source={require('./../../../assets/News.png')}/>
                         </TouchableOpacity>
-                        <Image style={styles.menuDimension} source={require('./../../../assets/Discount.png')}/>
-                        <Image style={styles.menuDimension} source={require('./../../../assets/events.png')}/>
+                        <TouchableOpacity onPress={() => {navigation.navigate('Market')}}>
+                            <Image style={styles.menuDimension} source={require('./../../../assets/Discount.png')}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Events')}>
+                            <Image style={styles.menuDimension} source={require('./../../../assets/events.png')}/>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

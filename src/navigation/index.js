@@ -9,12 +9,20 @@ import NewsScreen from "../screens/News/index"
 import HomeScreen from "../screens/HomeScreen";
 import NewsDetailsScreen from "../screens/NewsDetails/NewsDetailsScreen";
 import SearchScreen from "../screens/SearchScreen/SearchScreen";
+import MarketScreen from '../screens/MarketScreen/index';
+import Catalogue from "../screens/Catalogue/Catalogue";
+import Subscription from "../screens/Subscription/Subscription";
+import SubscriptionDetail from "../screens/Subscription/SubscriptionDetail";
+import NewCatalogueScreen from "../screens/NewCatalogueScreen/NewCatalogueScreen";
+import Events from '../screens/Events/Events';
+import EventDetail from '../screens/Events/EventDetail';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feed from "../screens/Profile";
 import { useColorScheme } from "react-native";
 // import Ionicons from '@expo/vector-icons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import UnixScreen from "../screens/Unix/Unix";
+import MapScreen from "../screens/Map/MapScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -33,11 +41,19 @@ const StackNavigator = () => {
             <Stack.Screen name={"Home"} component={TabNavigator} />
             <Stack.Screen name={"News"} component={NewsScreen} />
             <Stack.Screen name={"Unix"} component={UnixScreen} />
+            <Stack.Screen name={"Map"} component={MapScreen} />
             <Stack.Screen name={"NewsDetails"} component={NewsDetailsScreen}
                 options={{animation: "slide_from_bottom"}}
             />
             <Stack.Screen name={"Search"} component={SearchScreen}/>
+            <Stack.Screen name={"Market"} component={MarketScreen} />
+            <Stack.Screen name={"Catalogue"} component={Catalogue} />
+            <Stack.Screen name={"Subscription"} component={Subscription} />
+            <Stack.Screen name={"SubscriptionDetail"} component={SubscriptionDetail} />
+            <Stack.Screen name={"NewCatalogueScreen"} component={NewCatalogueScreen}/>
             <Stack.Screen name={"Parent"} component={ParentScreen} />
+            <Stack.Screen name={"Events"} component={Events}/>
+            <Stack.Screen name={'EventDetail'} component={EventDetail}/>
         </Stack.Navigator>
     )
 }
